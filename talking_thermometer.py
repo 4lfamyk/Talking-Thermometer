@@ -12,7 +12,7 @@ def main():
 	print "Welcome to Talking Thermometer v1.5"
 	lang = 'en'
 	TALK_PIN = 19
-	LANG_PIN =
+	LANG_PIN = 5
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(TALK_PIN,GPIO.IN)
 	GPIO.setup(LANG_PIN,GPIO.IN)
@@ -33,7 +33,7 @@ def main():
 				langIndex = langIndex + 1
 				if langIndex >= len(langList):
 					langIndex = 0 
-                                sleep(0.5)
+                                sleep(0.05)
 
 		input = GPIO.input(TALK_PIN)
 		if (input==False):
@@ -53,6 +53,6 @@ def main():
 					filename = "./lang/"+ lang + "/" + `int_temp` + ".5.wav"
 				command = "mplayer -framedrop " + filename + " ./lang/"+ lang +"/degree_celsius.wav >>/dev/null"
 				os.system(command)
-				sleep(0.5)
+				sleep(0.05)
 
 main()
